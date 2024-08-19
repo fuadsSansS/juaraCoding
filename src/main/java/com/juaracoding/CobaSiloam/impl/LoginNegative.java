@@ -25,10 +25,10 @@ public class LoginNegative {
 
     @BeforeTest
     public void initCase(){
-        DriverSingleton.getInstance(Constants.CHROME);
+        DriverSingleton.getInstance(Constants.FIREFOX);
         this.driver = DriverSingleton.getDriver();
         this.driver.get(Constants.URL_LOGIN);
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
     }
 
     @Test(priority = 0)
@@ -48,6 +48,33 @@ public class LoginNegative {
         loginPage.inputPassword("jfdjfd");
         loginPage.clickLogin();
         Assert.assertEquals(true, loginPage.validPassword);
+    }
+
+    @Test
+    public void emptyPassword(){
+        loginPage.clear();
+        loginPage.inputUsername("K6400001");
+        loginPage.inputPassword("");
+        loginPage.clickLogin();
+        Assert.assertEquals(false,loginPage.validPassword);
+    }
+
+    @Test
+    public void emptyUsername(){
+        loginPage.clear();
+        loginPage.inputUsername("");
+        loginPage.inputPassword("a");
+        loginPage.clickLogin();
+        Assert.assertFalse(loginPage.getValidUsername());
+    }
+
+    @Test
+    public void emptyUserPass(){
+        loginPage.clear();
+        loginPage.inputUsername("");
+        loginPage.inputPassword("");
+        loginPage.clickLogin();
+        Assert.assertFalse(loginPage.getValidUsername());
     }
 
 

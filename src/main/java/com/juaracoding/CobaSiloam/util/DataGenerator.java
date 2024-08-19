@@ -250,4 +250,48 @@ public class DataGenerator {
         }
         return password;
     }
+
+    public String dataNoKTP() {
+        isValid = false;
+        intLoop = 0;
+        String noKTP = "";
+        while (!isValid) {
+            try {
+                // Menghasilkan nomor KTP dengan 16 digit
+                noKTP = faker.numerify("################"); // generate 16-digit number
+                matcher = Pattern.compile("^\\d{16}$").matcher(noKTP); // match exactly 16 digits
+                isValid = matcher.find();
+                if (intLoop == 250) {
+                    System.out.println("SUDAH MENCOBA MEMBUAT DATA No KTP SEBANYAK 250 KALI DAN GAGAL !!");
+                    System.exit(1);
+                }
+                intLoop++;
+            } catch (Exception e) {
+                isValid = false;
+            }
+        }
+        return noKTP;
+    }
+
+    public String dataBPJS() {
+        isValid = false;
+        intLoop = 0;
+        String noBPJS = "";
+        while (!isValid) {
+            try {
+                // Menghasilkan nomor BPJS dengan 13 digit
+                noBPJS = faker.numerify("#############"); // generate 13-digit number
+                matcher = Pattern.compile("^\\d{13}$").matcher(noBPJS); // match exactly 13 digits
+                isValid = matcher.find();
+                if (intLoop == 250) {
+                    System.out.println("SUDAH MENCOBA MEMBUAT DATA No BPJS SEBANYAK 250 KALI DAN GAGAL !!");
+                    System.exit(1);
+                }
+                intLoop++;
+            } catch (Exception e) {
+                isValid = false;
+            }
+        }
+        return noBPJS;
+    }
 }

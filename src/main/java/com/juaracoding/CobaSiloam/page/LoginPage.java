@@ -43,8 +43,8 @@ public class LoginPage {
 
     public boolean validPassword;
 
-    public LoginPage(WebDriver driver) {
-        this.driver= driver;
+    public LoginPage() {
+        this.driver= DriverSingleton.getDriver();
         PageFactory.initElements(driver,this);
     }
 

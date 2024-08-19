@@ -28,6 +28,9 @@ public class HomePage {
     @FindBy(xpath = "/html/body/div[5]/h1")
     private WebElement breadcum;
 
+    @FindBy(xpath = "//span[normalize-space()='Input']")
+    private WebElement inputSpan;
+
     @FindBy(xpath = "//span[@class='d-none d-md-inline']")
     private WebElement profilSpan;
 
@@ -39,10 +42,6 @@ public class HomePage {
         PageFactory.initElements(driver,this);
     }
 
-    public HomePage(WebDriver driver) {
-        this.driver= driver;
-        PageFactory.initElements(driver,this);
-    }
 
     public String homePageValidation(){
         return breadcum==null?"":breadcum.getText();

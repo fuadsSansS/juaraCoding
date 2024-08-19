@@ -29,12 +29,11 @@ public class  LoginPositive {
 
     @BeforeTest
     public void initCase(){
-//        DriverSingleton.getInstance(Constants.FIREFOX);
-        DriverSingleton.getInstance(Constants.CHROME);
+        DriverSingleton.getInstance(Constants.FIREFOX);
         this.driver = DriverSingleton.getDriver();
         this.driver.get(Constants.URL_LOGIN);
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
+        loginPage = new LoginPage();
+        homePage = new HomePage();
     }
 
     @Test(priority = 0)
@@ -49,6 +48,7 @@ public class  LoginPositive {
         /** tambahkan step logout */
         Assert.assertEquals("Home",strValidation);//STEP-5
     }
+
 
     @Test(priority = 1)
     public void logout(){
